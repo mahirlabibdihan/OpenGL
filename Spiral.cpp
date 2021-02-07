@@ -4,19 +4,21 @@ int Count;
 void iDraw(void)
 {
 	iClear();
-    for(double Rad=0;Rad<Count*PI;Rad+=PI/10)
+	glBegin(GL_LINE_STRIP);
+    for(double Rad=0;Rad<Count*PI/2;Rad+=PI/100)
     {
     	double R=10*Rad;
     	iSetColor(R+50,R*cos(Rad)+50,R*sin(Rad)+50);
-    	iPoint(960+R*cos(Rad),540+R*sin(Rad),1+R/100);
+    	glVertex2f(960+R*cos(Rad),540+R*sin(Rad));//1+R/100
     }
+    glEnd();
 }
 
 void iMouse(int button, int state, int mx, int my)
 {
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		if(Count<33) Count++;
+		if(Count<70) Count++;
 	} 
 	if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
 	{
